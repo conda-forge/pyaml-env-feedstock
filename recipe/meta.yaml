@@ -1,5 +1,5 @@
 {% set name = "pyaml-env" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.3" %}
 
 
 package:
@@ -8,14 +8,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyaml_env-{{ version }}.tar.gz
-  sha256: e1e0add412272afa6472f6340e5d0032480edbc2e17ef15dc735aca5e5261f9c
+  sha256: b22179a96be995ef776364d7a22e84aba597d91f13b0cb797150e9ba047ea584
 
 build:
   number: 0
   noarch: python
-  script: 
-   - cp $RECIPE_DIR/requirements.txt .
-   - {{ PYTHON }} -m pip install . -vv
+  script:
+    - cp $RECIPE_DIR/requirements.txt .
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
