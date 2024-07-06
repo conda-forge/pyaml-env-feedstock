@@ -1,6 +1,5 @@
 {% set name = "pyaml-env" %}
-{% set version = "1.1.0" %}
-
+{% set version = "1.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,22 +7,20 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyaml_env-{{ version }}.tar.gz
-  sha256: e1e0add412272afa6472f6340e5d0032480edbc2e17ef15dc735aca5e5261f9c
+  sha256: 6d5dc98c8c82df743a132c196e79963050c9feb05b0a6f25f3ad77771d3d95b0
 
 build:
-  number: 0
   noarch: python
-  script: 
-   - cp $RECIPE_DIR/requirements.txt .
-   - {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
-    - pip
     - python >=3.6
+    - pip
   run:
     - python >=3.6
-    - pyyaml ==5.4.1
+    - pyyaml >=5.0,<=7.0
 
 test:
   imports:
@@ -42,3 +39,4 @@ about:
 extra:
   recipe-maintainers:
     - cburing
+    - jan-janssen
