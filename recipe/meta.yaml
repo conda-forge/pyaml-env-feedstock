@@ -1,5 +1,5 @@
 {% set name = "pyaml-env" %}
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pyaml_env-{{ version }}.tar.gz
-  sha256: 6d5dc98c8c82df743a132c196e79963050c9feb05b0a6f25f3ad77771d3d95b0
+  sha256: f83502516b6f1561ba7c2db9ced939a7a9933a66702d8071e98ad07da49a4bb4
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
