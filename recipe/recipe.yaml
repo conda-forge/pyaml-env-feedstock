@@ -1,0 +1,45 @@
+schema_version: 1
+
+context:
+  name: pyaml-env
+  version: "1.2.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyaml_env-${{ version }}.tar.gz
+  sha256: f83502516b6f1561ba7c2db9ced939a7a9933a66702d8071e98ad07da49a4bb4
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - pyyaml >=5.0,<=7.0
+
+tests:
+  - python:
+      imports:
+        - pyaml_env
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Provides yaml file parsing with environment variable resolution
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/mkaranasou/pyaml_env
+
+extra:
+  recipe-maintainers:
+    - cburing
+    - jan-janssen
