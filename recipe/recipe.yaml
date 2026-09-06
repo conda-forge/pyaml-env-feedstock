@@ -31,7 +31,9 @@ tests:
       imports:
         - pyaml_env
       pip_check: true
-      python_version: ${{ python_min }}
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
 about:
   summary: Provides yaml file parsing with environment variable resolution
